@@ -1,0 +1,28 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Voici la liste de toutes les bières !{% endblock %}
+
+{% block body %}
+{# {{ dump(bieres)}}
+{% for bieres in bieres %}
+{{ bieres.LibelleBiere }}
+{% endfor %} #}
+<div class="container">
+        <div class="card-deck">
+            {% for biere in bieres %}
+            <div class="card text-center" style="width: 16rem">
+                <img class="card-img-top" src="/Assets/biere.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><a style="text-decoration:none" href= "bieres/lire/<?= $biere->id_Biere ?>">{{ biere.LibelleBiere }}</a></h5>
+                    <h6>{{ biere.MarqueBiere }}</h6>
+                    <p class="card-text">{{ biere.DescriptionBiere }}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <h6>Prix : </h6><p>{{ biere.PrixTTCBiere }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
